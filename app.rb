@@ -8,7 +8,7 @@ configure :development do
 end
 
 configure :production do
-  set :database, {adapter: 'postgresql',  encoding: 'unicode', database: 'your_database_name', pool: 5 }
+  set :database, {adapter: 'postgresql',  encoding: 'unicode', pool: 5 }
 end
 
 enable :sessions
