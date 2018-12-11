@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/style.css">
+  <title>新しい連絡先</title>
+</head>
+<body>
+  <h1>新しい連絡先</h1>
+
+  <% if @contact.errors.present? %>
+    エラーがあります。
+    <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <form action="contacts" method="post">
+    <input type="text" name="name">
+    <input type="submit">
+  </form>
+  <div>
+    <a href="/">戻る</a>
+  </div>
+</body>
+</html>
