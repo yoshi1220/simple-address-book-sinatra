@@ -3,7 +3,14 @@ require 'bundler'
 
 Bundler.require
 
-set :database, { adapter: "sqlite3", database: "contacts.sqlite3" }
+configure :development do
+  set :database, { adapter: "sqlite3", database: "contacts.sqlite3" }
+end
+
+configure :production do
+  set :database, {adapter: 'postgresql',  encoding: 'unicode', database: 'your_database_name', pool: 5 }
+end
+
 enable :sessions
 
 class Contact < ActiveRecord::Base
