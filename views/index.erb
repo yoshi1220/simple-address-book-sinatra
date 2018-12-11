@@ -1,32 +1,41 @@
-<h1>連絡帳</h1>
+<div class="w3-container">
+  <header>
+    <h1>連絡帳</h1>
+    <% if @message %>
+      <div class="message"><%= @message %></div>
+    <% end %>
+    <div>
+      <a href="/contact_new" class="w3-btn w3-teal w3-round-large">新しい連絡先</a>
+    </div>
+    <br>
+  </header>
 
-<% if @message %>
-  <div class="message"><%= @message %></div>
-<% end %>
-<div>
-  <a href="/contact_new">新しい連絡先</a>
+  <div>
+    <table class="w3-table-all">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>email</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @contacts.each do |contact| %>
+            <tr>
+              <td><%= contact.id %></td>
+              <td><%= contact.name %></td>
+              <td><%= contact.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
+  <br>
+  <footer>
+    <a href="/about">このサービスについて</a>
+    <p><%= @now %></p>
+  </footer>
 </div>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>名前</th>
-      <th>email</th>
-    </tr>
-  </thead>
-  <tbody>
-      <% @contacts.each do |contact| %>
-        <tr>
-          <td><%= contact.id %></td>
-          <td><%= contact.name %></td>
-          <td><%= contact.email %></td>
-        </tr>
-      <% end %>
-    </tbody>
-</table>
 
-<footer>
-  <a href="about.html">このサービスについて</a>
-  <p>今の時刻は：<%= @now %></p>
-</footer>
+

@@ -23,13 +23,18 @@ get '/contact_new' do
   erb :contact_form
 end
 
+get '/about' do
+  erb :about
+end
+
 post '/contacts' do
   p params
 
   name = params[:name]
+  email = params[:email]
 
   # DBに保存
-  @contact = Contact.new({name: name})
+  @contact = Contact.new({name: name, email: email})
   if @contact.save
     session[:message] = "#{name}さんを作成しました。"
     redirect '/'
