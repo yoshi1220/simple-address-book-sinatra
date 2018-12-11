@@ -9,6 +9,6 @@ test:
   database: db/test.db
 
 production:
-  adapter: sqlite3
-  encoding: utf8
-  database: db/test.db
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
