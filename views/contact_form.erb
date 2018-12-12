@@ -1,5 +1,5 @@
 <div class="w3-container">
-  <h1>新しい連絡先</h1>
+  <h1>新規登録</h1>
 
   <% if @contact.errors.present? %>
     エラーがあります。
@@ -9,12 +9,30 @@
       <% end %>
     </ul>
   <% end %>
-  <form action="contacts" method="post">
-    <input type="text" name="name">
-    <input type="text" name="email">
-    <input type="submit">
-  </form>
+  <div class="w3-card-4">
+    <div class="w3-container w3-teal">
+      <h2>新しい連絡先</h2>
+    </div>
+    <br>
+    <form class="w3-container" action="contacts" method="post">
+      <div>
+        <label for="contact_name">名前</label>
+        <input class="w3-input" type="text" name="name" id="contact_name" value="<%= @contact.name %>">
+      </div>
+      <div>
+        <label for="contact_email">Email</label>
+        <input class="w3-input" type="text" name="email" id="contact_email" value="<%= @contact.email %>">
+      </div>
+      <br>
+      <div class="row">
+        <input type="submit" value="登録">
+      </div>
+      <br>
+    </form>
+  </div>
   
+  
+  <br>
   <footer>
     <a href="/">戻る</a>
   </footer>
