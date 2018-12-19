@@ -10,7 +10,7 @@ end
 configure :production do
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
   use Rack::Auth::Basic do |username, password|
-      username == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']
+    username == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']
   end
 end
 
@@ -51,4 +51,12 @@ post '/contacts' do
   else
     erb :contact_form
   end
+end
+
+post '/delete_row' do
+  p params
+
+  Contact.destroy(params[:delete_id])
+
+  redirect '/'
 end

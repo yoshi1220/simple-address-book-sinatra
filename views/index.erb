@@ -11,26 +11,28 @@
   </header>
 
   <div>
-    <table class="w3-table-all">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>名前</th>
-          <th>email</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-          <% @contacts.each do |contact| %>
-            <tr>
-              <td><%= contact.id %></td>
-              <td><%= contact.name %></td>
-              <td><%= contact.email %></td>
-              <td><button class="w3-btn w3-green">削除</button></td>
-            </tr>
-          <% end %>
-        </tbody>
-    </table>
+    <form class="w3-container" action="delete_row" method="post">
+      <table class="w3-table-all">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @contacts.each do |contact| %>
+              <tr>
+                <td><%= contact.id %></td>
+                <td><%= contact.name %></td>
+                <td><%= contact.email %></td>
+                <td><button class="w3-btn w3-green" name="delete_id" value="<%= contact.id %>">削除</button></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </form>
   </div>
   <br>
   <footer>
